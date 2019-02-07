@@ -1,0 +1,2 @@
+1. la razon del consumo de la cpu se debe a que el productor la momento de añadir un producto se duerme un segundo lo que eventaulmente generar que el consumidor deba esperar a la produccion de un nuevo producto
+2.la clase responsable es "producer.java"
