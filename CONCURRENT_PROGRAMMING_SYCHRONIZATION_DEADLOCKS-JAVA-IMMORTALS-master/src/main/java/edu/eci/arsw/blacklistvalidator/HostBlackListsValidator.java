@@ -75,8 +75,11 @@ public class HostBlackListsValidator {
                 flag=false;
                 
             }
+         
         }
-
+        for (BlacklistThread i: thread){
+            i.stop();
+        }
         
         if (ocurrencesCount >= BLACK_LIST_ALARM_COUNT) {
             skds.reportAsNotTrustworthy(ipaddress);
