@@ -1,2 +1,8 @@
 1. la razon del consumo de la cpu se debe a que el productor la momento de añadir un producto se duerme un segundo lo que eventaulmente generar que el consumidor deba esperar a la produccion de un nuevo producto
-2.la clase responsable es "producer.java"
+2.la clase responsable es "producer.java
+
+
+Highlander-simulator
+2. La invariante debe ser n*DEFAULT_IMMORTAL_HEALTH, que en este caso es 100
+3.No se cumple, de echo el valor de vida de los inmortales va en aumento a cada pause and check.
+4.No, no se cumple el invariante, se puede deber a una region critica en la pelea.

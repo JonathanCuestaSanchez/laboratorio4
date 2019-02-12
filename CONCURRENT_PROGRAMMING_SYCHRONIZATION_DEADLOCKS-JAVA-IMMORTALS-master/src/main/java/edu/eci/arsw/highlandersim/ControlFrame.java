@@ -26,7 +26,7 @@ public class ControlFrame extends JFrame {
 
     private static final int DEFAULT_IMMORTAL_HEALTH = 100;
     private static final int DEFAULT_DAMAGE_VALUE = 10;
-
+    private Integer maxheal;
     private JPanel contentPane;
 
     private List<Immortal> immortals;
@@ -87,10 +87,11 @@ public class ControlFrame extends JFrame {
         JButton btnPauseAndCheck = new JButton("Pause and check");
         btnPauseAndCheck.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-
-                /*
-				 * COMPLETAR
-                 */
+                
+                for(Immortal i: immortals){
+                    i.pause();
+                }
+                
                 int sum = 0;
                 for (Immortal im : immortals) {
                     sum += im.getHealth();
@@ -108,9 +109,13 @@ public class ControlFrame extends JFrame {
 
         btnResume.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                /**
-                 * IMPLEMENTAR
-                 */
+                for(Immortal i: immortals){
+                    i.resum();
+                }
+                synchronized (maxheal) {
+                    
+                    maxheal.notifyAll();
+                }
 
             }
         });
@@ -150,9 +155,9 @@ public class ControlFrame extends JFrame {
             int ni = Integer.parseInt(numOfImmortals.getText());
 
             List<Immortal> il = new LinkedList<Immortal>();
-
+            this.maxheal=ni*DEFAULT_IMMORTAL_HEALTH;
             for (int i = 0; i < ni; i++) {
-                Immortal i1 = new Immortal("im" + i, il, DEFAULT_IMMORTAL_HEALTH, DEFAULT_DAMAGE_VALUE,ucb);
+                Immortal i1 = new Immortal(maxheal,"im" + i, il, DEFAULT_IMMORTAL_HEALTH, DEFAULT_DAMAGE_VALUE,ucb);
                 il.add(i1);
             }
             return il;
