@@ -89,10 +89,9 @@ public class ControlFrame extends JFrame {
         JButton btnPauseAndCheck = new JButton("Pause and check");
         btnPauseAndCheck.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                synchronized (maxheal) {
-                    for (Immortal i : immortals) {
-                        i.pause();
-                    }
+                
+                for (Immortal i : immortals) {
+                    i.pause();
                 }
 
                 int sum = 0;
@@ -103,6 +102,7 @@ public class ControlFrame extends JFrame {
                 statisticsLabel.setText("<html>" + immortals.toString() + "<br>Health sum:" + sum);
 
             }
+           
         });
         toolBar.add(btnPauseAndCheck);
 
@@ -134,17 +134,17 @@ public class ControlFrame extends JFrame {
         JButton btnStop = new JButton("STOP");
         btnStop.setForeground(Color.RED);
         toolBar.add(btnStop);
-        
-        btnStop.addActionListener(new ActionListener(){
-             public void actionPerformed(ActionEvent e) {
+
+        btnStop.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
                 for (Immortal i : immortals) {
                     i.stop();
                 }
-               
+
             }
-             
+
         });
-        
+
         scrollPane = new JScrollPane();
         contentPane.add(scrollPane, BorderLayout.CENTER);
 
