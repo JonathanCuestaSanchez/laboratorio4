@@ -140,8 +140,9 @@ public class ControlFrame extends JFrame {
                 for (Immortal i : immortals) {
                     i.stop();
                 }
-               JFrame.EXIT_ON_CLOSE;
+               
             }
+             
         });
         
         scrollPane = new JScrollPane();

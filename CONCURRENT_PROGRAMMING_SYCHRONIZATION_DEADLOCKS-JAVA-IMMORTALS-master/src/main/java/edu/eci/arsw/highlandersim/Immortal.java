@@ -34,23 +34,21 @@ public class Immortal extends Thread {
     }
 
     public void run() {
-
-        while (true) {
+        boolean dead = false;
+        while (!dead) {
+            if (health == 0) {
+                    dead=true;
+                }
             if (!pause) {
                 Immortal im;
 
                 int myIndex = immortalsPopulation.indexOf(this);
 
                 int nextFighterIndex = r.nextInt(immortalsPopulation.size());
-                boolean flag=true;
+                
                 //avoid self-fight
-                while (flag){
-                    if (nextFighterIndex == myIndex) {
-                        nextFighterIndex = ((nextFighterIndex + 1) % immortalsPopulation.size());
-                    }
-                    if (immortalsPopulation.get(nextFighterIndex).health>0){
-                        flag=false;
-                    }
+                if (nextFighterIndex == myIndex) {
+                    nextFighterIndex = ((nextFighterIndex + 1) % immortalsPopulation.size());
                 }
 
                 im = immortalsPopulation.get(nextFighterIndex);
@@ -62,7 +60,9 @@ public class Immortal extends Thread {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
+                
             } else {
+                
                 synchronized (maxHeal) {
                     try {
                         maxHeal.wait();
