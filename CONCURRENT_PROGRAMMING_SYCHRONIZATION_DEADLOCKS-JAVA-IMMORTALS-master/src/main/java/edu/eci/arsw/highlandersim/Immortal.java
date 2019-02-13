@@ -73,6 +73,7 @@ public class Immortal extends Thread {
                         Logger.getLogger(Immortal.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     pause=false;
+                    
                 }
             }
 

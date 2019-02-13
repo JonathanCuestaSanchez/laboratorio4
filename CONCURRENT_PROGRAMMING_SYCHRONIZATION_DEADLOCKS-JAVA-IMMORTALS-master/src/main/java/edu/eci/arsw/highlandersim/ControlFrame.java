@@ -114,9 +114,7 @@ public class ControlFrame extends JFrame {
 
                     maxheal.notifyAll();
                 }
-                for (Immortal i : immortals) {
-                    i.resum();
-                }
+                
 
             }
         });
